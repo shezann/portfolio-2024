@@ -1,13 +1,28 @@
-import Circle from "./Circle.tsx";
+import Circle from "./Circle";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
 
 const Circles = () => {
   return (
-    <div>
+    <motion.div
+      className="circle_container"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <Circle isSelected={true} />
       <Circle />
       <Circle />
       <Circle />
-    </div>
+    </motion.div>
   );
 };
 
