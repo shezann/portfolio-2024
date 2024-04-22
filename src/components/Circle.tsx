@@ -4,6 +4,7 @@ import "./Circle.css";
 
 interface CircleProps {
   isSelected?: boolean;
+  text?: string; // New prop to display text inside the circle
 }
 
 const circleVariants = {
@@ -15,7 +16,7 @@ const circleVariants = {
   },
 };
 
-const Circle: React.FC<CircleProps> = ({ isSelected = false }) => {
+const Circle: React.FC<CircleProps> = ({ isSelected = false, text = "" }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -46,6 +47,8 @@ const Circle: React.FC<CircleProps> = ({ isSelected = false }) => {
       style={{ x: position.x, y: position.y, position: "relative" }}
     >
       <div className={isSelected ? "selected_glow" : "circle_glow"}></div>
+      {text && <div className="circle_text">{text}</div>}{" "}
+      {/* Display the text inside the circle */}
     </motion.div>
   );
 };

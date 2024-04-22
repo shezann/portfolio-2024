@@ -1,29 +1,35 @@
-.circle {
+.circle, .selected_circle {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background: #2f2cd1;
-}
-
-.circle_glow {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: linear-gradient(to bottom right, transparent, white);
-  opacity: 0.5;
+  position: relative; /* ensure that children can be positioned absolutely within */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* text color */
+  font-size: 20px; /* adjust as necessary */
+  overflow: hidden; /* in case the text is too large */
 }
 
 .selected_circle {
   width: 250px;
   height: 250px;
-  border-radius: 50%;
   background: #070750;
-  position: relative;
 }
 
-.selected_glow {
-  width: 250px;
-  height: 250px;
+.circle_text {
+  position: absolute; /* Position text absolutely within the circle */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the text */
+  text-align: center;
+  padding: 0 1rem; /* Give some padding inside the circle */
+}
+
+.circle_glow, .selected_glow {
+  width: 100%; /* Use percentage to make it responsive to the circle's size */
+  height: 100%; /* Use percentage to make it responsive to the circle's size */
   border-radius: 50%;
   background: linear-gradient(to bottom right, transparent, white);
   opacity: 0.5;
