@@ -72,11 +72,11 @@ const getPositionStyles = (index: number) => {
     case 0:
       return "top: 0; left: 0%; transform: translate(-50%, -100%);";
     case 1:
-      return "top: -35px; right: 70%; transform: translate(100%, -50%);";
+      return "top: -50px; right: 60%; transform: translate(100%, -50%);";
     case 2:
-      return "bottom: 70px; left: -40%; transform: translate(-50%, 100%);";
+      return "bottom: 60px; left: -40%; transform: translate(-50%, 100%);";
     case 3:
-      return "top: -140px; left: 25%; transform: translate(-100%, -50%);";
+      return "top: -140px; left: 30%; transform: translate(-100%, -50%);";
     default:
       return "";
   }
