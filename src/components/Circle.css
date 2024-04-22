@@ -1,6 +1,6 @@
 .circle, .selected_circle {
-  width: 200px;
-  height: 200px;
+  width: 190px;
+  height: 190px;
   border-radius: 50%;
   background: #2f2cd1;
   position: relative; /* ensure that children can be positioned absolutely within */
