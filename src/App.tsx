@@ -1,8 +1,10 @@
-import "./App.css";
+import React, { useState } from "react";
 import Circle from "./components/Circle";
 import { motion } from "framer-motion";
-import { PERSONAL_STATEMENT } from "./utils/constants";
+import { PERSONAL_STATEMENT, circleTitles } from "./utils/constants";
+import "./App.css";
 
+// Assuming circleTitles is an array of strings
 const containerVariants = {
   hidden: {},
   visible: {
@@ -12,7 +14,13 @@ const containerVariants = {
   },
 };
 
-function App() {
+const App: React.FC = () => {
+  const [selected, setSelected] = useState<string>(circleTitles[0]);
+
+  const handleCircleClick = (title: string) => {
+    setSelected(title);
+  };
+
   return (
     <div className="container">
       <div className="text-side">
@@ -27,14 +35,18 @@ function App() {
           initial="hidden"
           animate="visible"
         >
-          <Circle isSelected={true} text="about" />
-          <Circle text="projects" />
-          <Circle text="work experiences" />
-          <Circle text="contact" />
+          {circleTitles.map((title: string) => (
+            <Circle
+              key={title}
+              text={title}
+              isSelected={selected === title}
+              onClick={() => handleCircleClick(title)}
+            />
+          ))}
         </motion.div>
       </div>
     </div>
   );
-}
+};
 
 export default App;

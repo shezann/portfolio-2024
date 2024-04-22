@@ -36,14 +36,14 @@
 
 
 /* Positions for each circle to form the ring */
-.circle:nth-child(1), .selected_circle:nth-child(1) { /* First circle */
+.circle:nth-child(1) { /* First circle */
   top: 0;
   left: 0%;
   transform: translate(-50%, -100%);
 }
 
 .circle:nth-child(2) { /* Second circle */
-  top: -50px;
+  top: -35px;
   right: 70%;
   transform: translate(100%, -50%);
 }
@@ -56,6 +56,6 @@
 
 .circle:nth-child(4) { /* Fourth circle */
   top: -140px;
-  left: 30%;
+  left: 25%;
   transform: translate(-100%, -50%);
 }

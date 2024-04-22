@@ -3,20 +3,16 @@
   height: 190px;
   border-radius: 50%;
   background: #2f2cd1;
-  position: relative; /* ensure that children can be positioned absolutely within */
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white; /* text color */
-  font-size: 20px; /* adjust as necessary */
-  overflow: hidden; /* in case the text is too large */
+  color: white;
+  font-size: 20px;
+  overflow: hidden;
+  cursor: pointer; /* To indicate clickable items */
 }
 
-.selected_circle {
-  width: 250px;
-  height: 250px;
-  background: #070750;
-}
 
 .circle_text {
   position: absolute; /* Position text absolutely within the circle */
@@ -25,15 +21,17 @@
   transform: translate(-50%, -50%); /* Center the text */
   text-align: center;
   padding: 0 1rem; /* Give some padding inside the circle */
+  transition: color 0.3s;
 }
 
 .circle_glow, .selected_glow {
-  width: 100%; /* Use percentage to make it responsive to the circle's size */
-  height: 100%; /* Use percentage to make it responsive to the circle's size */
+  width: 100%; 
+  height: 100%;
   border-radius: 50%;
   background: linear-gradient(to bottom right, transparent, white);
   opacity: 0.5;
   position: absolute;
   top: 0;
   left: 0;
+  transition: opacity 0.3s;
 }
