@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import Circle from "./components/Circle";
 import { PERSONAL_STATEMENT, circleTitles } from "./utils/constants";
+import Background from "./components/Background";
 
 const containerVariants = {
   hidden: {},
@@ -22,8 +23,9 @@ const App: React.FC = () => {
 
   return (
     <Container>
+      <Background />
       <TextSide>
-        <h1>shezan mahmud</h1>
+        <Name>shezan mahmud</Name>
         <p>{PERSONAL_STATEMENT}</p>
         {/* Other text and links */}
       </TextSide>
@@ -79,4 +81,8 @@ const StyledCircleContainer = styled(motion.div)`
   justify-content: center;
   align-items: center;
   gap: 1em;
+`;
+const Name = styled.h1`
+  mix-blend-mode: normal;
+  font-size: 96px;
 `;
