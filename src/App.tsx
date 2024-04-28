@@ -68,9 +68,9 @@ export default App;
 
 const Container = styled.div`
   display: flex;
+  width: 1280px;
+  height: 1000px;
   align-items: center;
-  min-height: 100vh;
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: left;
