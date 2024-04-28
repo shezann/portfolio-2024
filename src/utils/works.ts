@@ -1,4 +1,4 @@
-export const works = [
+export const works: Work[] = [
   {
     companyName: "Company",
     position: "Position",
@@ -9,3 +9,13 @@ export const works = [
     bullets: ["Bullet point 1", "Bullet point 2", "Bullet point 3"],
   },
 ];
+
+export interface Work {
+  companyName: string;
+  position: string;
+  location: string;
+  technologies: string[];
+  startDate: string;
+  endDate: string;
+  bullets: string[];
+}

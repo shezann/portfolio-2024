@@ -1,11 +1,12 @@
 import React from "react";
 import { works } from "../utils/works";
+import type { Work } from "../utils/works";
 
 const Work: React.FC = () => {
   return (
     <div>
       <h2>Work Experience</h2>
-      {works.map((work, index) => (
+      {works.map((work: Work, index: number) => (
         <div key={index}>
           <h3>
             {work.position} - {work.companyName}
