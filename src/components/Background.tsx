@@ -23,7 +23,7 @@ const moveAnimation = keyframes`
     transform: translate(250px, 0px);
   }
   75% {
-    transform: translate(270px, -5px); // Smaller vertical movement
+    transform: translate(230px, -5px); // Smaller vertical movement
   }
   100% {
     transform: translate(200px, 0px);

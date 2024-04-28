@@ -80,6 +80,7 @@ const TextSide = styled.div`
   flex: 1;
   padding-right: 2rem;
   color: black;
+  width: 1000px;
 `;
 
 const CircleSide = styled.div`
