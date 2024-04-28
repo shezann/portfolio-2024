@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import Circle from "./components/Circle";
-import { PERSONAL_STATEMENT, circleTitles } from "./utils/constants";
+import { circleTitles } from "./utils/constants";
+import About from "./components/About";
+import Project from "./components/Project";
+import Work from "./components/Work";
 import Background from "./components/Background";
 
 const containerVariants = {
@@ -21,14 +24,25 @@ const App: React.FC = () => {
     setSelected(title);
   };
 
+  const renderContent = () => {
+    switch (selected) {
+      case "about":
+        return <About />;
+      case "projects":
+        return <Project />;
+      case "work experiences":
+        return <Work />;
+      case "contact":
+        return <div>Contact Info</div>;
+      default:
+        return <div>Select an option</div>;
+    }
+  };
+
   return (
     <Container>
       <Background />
-      <TextSide>
-        <Name>shezan mahmud</Name>
-        <p>{PERSONAL_STATEMENT}</p>
-        {/* Other text and links */}
-      </TextSide>
+      <TextSide>{renderContent()}</TextSide>
       <CircleSide>
         <StyledCircleContainer
           variants={containerVariants}
@@ -41,7 +55,7 @@ const App: React.FC = () => {
               text={title}
               isSelected={selected === title}
               onClick={() => handleCircleClick(title)}
-              index={index} // Pass index for position
+              index={index}
             />
           ))}
         </StyledCircleContainer>
@@ -81,8 +95,4 @@ const StyledCircleContainer = styled(motion.div)`
   justify-content: center;
   align-items: center;
   gap: 1em;
-`;
-const Name = styled.h1`
-  mix-blend-mode: normal;
-  font-size: 96px;
 `;
