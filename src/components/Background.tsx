@@ -1,9 +1,11 @@
 import styled, { keyframes } from "styled-components";
+import bigSmoke from "../assets/bigSmoke.png";
 
 const Background = () => {
   return (
     <BackgroundStyled>
-      <BigSmokeSVG />
+      {/* <BigSmokeSVG /> */}
+      <StyledImage src={bigSmoke} alt="smoke" />
     </BackgroundStyled>
   );
 };
@@ -12,20 +14,29 @@ export default Background;
 
 const moveAnimation = keyframes`
   0% {
-    transform: translate(0px, 0px);
+    transform: translate(200px, 0px);
   }
   25% {
-    transform: translate(10px, 20px);
+    transform: translate(230px, -10px); // Smaller vertical movement
   }
   50% {
-    transform: translate(-10px, -15px);
+    transform: translate(250px, 0px);
   }
   75% {
-    transform: translate(-20px, 10px);
+    transform: translate(270px, -5px); // Smaller vertical movement
   }
   100% {
-    transform: translate(0px, 0px);
+    transform: translate(200px, 0px);
   }
+`;
+
+const StyledImage = styled.img`
+  width: 900px !important;
+  height: 600px !important;
+  object-fit: cover;
+  position: absolute;
+  transform: translateX(-50%);
+  animation: ${moveAnimation} 10s infinite ease-in-out;
 `;
 
 const BackgroundStyled = styled.div`
@@ -34,23 +45,23 @@ const BackgroundStyled = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; // Keep it behind all other content
+  z-index: -1;
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover; // Adjust to cover the entire area
+    object-fit: cover;
   }
 
   h1 {
     position: absolute;
     bottom: 20px;
     left: 20px;
-    color: white; // Ensure text is visible on the background
+    color: white;
   }
 
   svg {
-    animation: ${moveAnimation} 20s infinite; // Adjust timing as needed
+    animation: ${moveAnimation} 20s infinite;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -62,7 +73,7 @@ const BigSmokeSVG = () => {
     <svg
       width="882"
       height="592"
-      viewBox="0 0 882 592"
+      viewBox="-270 0 1200 600"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
