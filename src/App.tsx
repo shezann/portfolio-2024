@@ -69,16 +69,14 @@ export default App;
 const Container = styled.div`
   display: flex;
   width: 1280px;
-  height: 1000px;
+  height: 832px;
   align-items: center;
-  margin: 0 auto;
   padding: 2rem;
   text-align: left;
 `;
 
 const TextSide = styled.div`
   flex: 1;
-  padding-right: 2rem;
   color: black;
   width: 1000px;
 `;

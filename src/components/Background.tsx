@@ -6,10 +6,9 @@ import tinySmoke from "../assets/tinySmoke.png";
 const Background = () => {
   return (
     <BackgroundStyled>
-      {/* <BigSmokeSVG /> */}
-      <StyledImage src={bigSmoke} alt="smoke" />
-      <StyledImage src={midSmoke} alt="smoke" />
-      <StyledImage className="smallSmoke" src={tinySmoke} alt="smoke" />
+      <BigSmoke src={bigSmoke} alt="smoke" />
+      <MediumSmoke src={midSmoke} alt="smoke" />
+      <TinySmoke className="smallSmoke" src={tinySmoke} alt="smoke" />
     </BackgroundStyled>
   );
 };
@@ -18,29 +17,80 @@ export default Background;
 
 const moveAnimation = keyframes`
   0% {
-    transform: translate(200px, 0px);
+    transform: translate(180px,-75px);
   }
   25% {
-    transform: translate(230px, 25px); // Smaller vertical movement
+    transform: translate(170px, -95px);
   }
   50% {
-    transform: translate(250px, 50px);
+    transform: translate(190px,-85px);
   }
   75% {
-    transform: translate(230px, 25px); // Smaller vertical movement
+    transform: translate(180px, -65px);
   }
   100% {
-    transform: translate(200px, 0px);
+    transform: translate(170px,-75px);
   }
 `;
 
-const StyledImage = styled.img`
-  width: 900px !important;
-  height: 600px !important;
-  object-fit: contain !important;
+const moveAnimation2 = keyframes`
+  0% {
+    transform: translate(820px, 300px);
+  }
+  25% {
+    transform: translate(810px, 325px);
+  }
+  50% {
+    transform: translate(820px, 300px);
+  }
+  75% {
+    transform: translate(810px, 325px);
+  }
+  100% {
+    transform: translate(820px, 300px);
+  }
+`;
+
+const moveAnimation3 = keyframes`
+  0% {
+    transform: translate(1000px, 285px);
+  }
+  25% {
+    transform: translate(1020px, 300px);
+  }
+  50% {
+    transform: translate(1000px, 285px);
+  }
+  75% {
+    transform: translate(1020px, 300px);
+  }
+  100% {
+    transform: translate(1000px, 285px);
+  }
+`;
+
+const BigSmoke = styled.img`
+  width: 900px;
+  height: 600px;
+  object-fit: contain;
   position: absolute;
-  transform: translateX(-50%);
-  animation: ${moveAnimation} 10s infinite ease-in-out;
+  animation: ${moveAnimation} 20s infinite ease-in-out;
+`;
+
+const MediumSmoke = styled.img`
+  width: 408px;
+  height: 414px;
+  object-fit: contain;
+  position: absolute;
+  animation: ${moveAnimation2} 15s infinite ease-in-out;
+`;
+
+const TinySmoke = styled.img`
+  width: 135px;
+  height: 133px;
+  object-fit: contain;
+  position: absolute;
+  animation: ${moveAnimation3} 20s infinite ease-in-out;
 `;
 
 const BackgroundStyled = styled.div`
@@ -50,12 +100,6 @@ const BackgroundStyled = styled.div`
   width: 100%;
   height: 100%;
   z-index: -1;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 
   h1 {
     position: absolute;
@@ -72,57 +116,3 @@ const BackgroundStyled = styled.div`
   }
 `;
 
-const BigSmokeSVG = () => {
-  return (
-    <svg
-      width="882"
-      height="592"
-      viewBox="-270 0 1200 600"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g filter="url(#filter0_f_58_8)">
-        <path
-          d="M76.1576 354.795C2.1576 232.795 -11.842 104.795 258.158 150.795C640.158 124.795 722.158 -53.205 820.158 10.795C918.158 74.795 766.158 218.795 684.158 298.795C602.158 378.795 548.158 486.795 418.158 546.795C288.158 606.795 150.158 476.795 76.1576 354.795Z"
-          fill="url(#paint0_angular_58_8)"
-          fill-opacity="0.7"
-        />
-      </g>
-      <defs>
-        <filter
-          id="filter0_f_58_8"
-          x="0"
-          y="-33"
-          width="881.996"
-          height="624.901"
-          filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
-        >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
-          <feGaussianBlur
-            stdDeviation="15"
-            result="effect1_foregroundBlur_58_8"
-          />
-        </filter>
-        <radialGradient
-          id="paint0_angular_58_8"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(306.158 332.795) rotate(-141.65) scale(467.88 680.82)"
-        >
-          <stop stop-color="white" />
-          <stop offset="0.31" stop-color="#D9D9D9" />
-          <stop offset="0.55" stop-color="#737373" />
-        </radialGradient>
-      </defs>
-    </svg>
-  );
-};

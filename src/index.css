@@ -18,6 +18,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
@@ -32,7 +37,6 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   overflow: hidden;
 }
 
