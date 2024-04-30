@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { ReactNode, useState } from "react";
+import { MotionValue, motion } from "framer-motion";
 import styled from "styled-components";
 import Circle from "./components/Circle";
 import { circleTitles } from "./utils/constants";
@@ -17,6 +17,28 @@ const containerVariants = {
   },
 };
 
+const contentVariants = {
+  hidden: {
+    y: 50,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      y: {
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+      },
+      opacity: {
+        duration: 0.5,
+        ease: "easeIn",
+      },
+    },
+  },
+};
+
 const App: React.FC = () => {
   const [selected, setSelected] = useState<string>(circleTitles[0]);
 
@@ -25,17 +47,31 @@ const App: React.FC = () => {
   };
 
   const renderContent = () => {
+    const content = (
+      component: ReactNode | MotionValue<number> | MotionValue<string>,
+    ) => (
+      <motion.div
+        variants={contentVariants}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        key={selected} // Key change triggers animation
+      >
+        {component}
+      </motion.div>
+    );
+
     switch (selected) {
       case "about":
-        return <About />;
+        return content(<About />);
       case "projects":
-        return <Project />;
+        return content(<Project />);
       case "work experiences":
-        return <Work />;
+        return content(<Work />);
       case "contact":
-        return <div>Contact Info</div>;
+        return content(<div>Contact Info</div>);
       default:
-        return <div>Select an option</div>;
+        return content(<div>Select an option</div>);
     }
   };
 
