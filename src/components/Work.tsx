@@ -1,16 +1,16 @@
 import React from "react";
+import styled from "styled-components";
 import { works } from "../utils/works";
 import type { Work } from "../utils/works";
 
 const Work: React.FC = () => {
   return (
     <div>
-      <h2>Work Experience</h2>
       {works.map((work: Work, index: number) => (
         <div key={index}>
-          <h3>
+          <StyledH1>
             {work.position} - {work.companyName}
-          </h3>
+          </StyledH1>
           <p>{work.location}</p>
           <p>{`${work.startDate} - ${work.endDate}`}</p>
           <ul>
@@ -25,3 +25,9 @@ const Work: React.FC = () => {
 };
 
 export default Work;
+
+const StyledH1 = styled.h1`
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 8px;
+`;

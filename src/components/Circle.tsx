@@ -117,7 +117,7 @@ const CircleGlow = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: linear-gradient(to bottom right, transparent, white);
+  background: linear-gradient(30deg, transparent, white);
   opacity: 0.5;
   position: absolute;
   top: 0;

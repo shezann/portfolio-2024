@@ -1,11 +1,15 @@
 import styled, { keyframes } from "styled-components";
 import bigSmoke from "../assets/bigSmoke.png";
+import midSmoke from "../assets/midSmoke.png";
+import tinySmoke from "../assets/tinySmoke.png";
 
 const Background = () => {
   return (
     <BackgroundStyled>
       {/* <BigSmokeSVG /> */}
       <StyledImage src={bigSmoke} alt="smoke" />
+      <StyledImage src={midSmoke} alt="smoke" />
+      <StyledImage className="smallSmoke" src={tinySmoke} alt="smoke" />
     </BackgroundStyled>
   );
 };
@@ -17,13 +21,13 @@ const moveAnimation = keyframes`
     transform: translate(200px, 0px);
   }
   25% {
-    transform: translate(230px, -10px); // Smaller vertical movement
+    transform: translate(230px, 25px); // Smaller vertical movement
   }
   50% {
-    transform: translate(250px, 0px);
+    transform: translate(250px, 50px);
   }
   75% {
-    transform: translate(230px, -5px); // Smaller vertical movement
+    transform: translate(230px, 25px); // Smaller vertical movement
   }
   100% {
     transform: translate(200px, 0px);
@@ -33,7 +37,7 @@ const moveAnimation = keyframes`
 const StyledImage = styled.img`
   width: 900px !important;
   height: 600px !important;
-  object-fit: cover;
+  object-fit: contain !important;
   position: absolute;
   transform: translateX(-50%);
   animation: ${moveAnimation} 10s infinite ease-in-out;
