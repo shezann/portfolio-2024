@@ -21,10 +21,12 @@ const contentVariants = {
   hidden: {
     y: 50,
     opacity: 0,
+    filter: "blur(10px)",
   },
   visible: {
     y: 0,
     opacity: 1,
+    filter: "blur(0px)",
     transition: {
       y: {
         type: "spring",
@@ -35,9 +37,13 @@ const contentVariants = {
         duration: 0.5,
         ease: "easeIn",
       },
+      filter: {
+        duration: 0.5,
+      },
     },
   },
 };
+
 
 const App: React.FC = () => {
   const [selected, setSelected] = useState<string>(circleTitles[0]);

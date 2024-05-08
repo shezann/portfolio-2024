@@ -16,7 +16,6 @@ const About: React.FC = () => {
 export default About;
 
 const Name = styled.h1`
-  mix-blend-mode: difference;
   font-size: 96px;
   font-weight: 600;
   margin-bottom: 0;
