@@ -8,13 +8,13 @@ const Project: React.FC = () => {
   const [projectImages, setProjectImages] = useState<string[]>([]);
 
   useEffect(() => {
-    loadProjectImages(projects[currentProjectIndex].projectName);
+    loadProjectImages(projects[currentProjectIndex].projectTitle);
   }, [currentProjectIndex]);
 
-  const loadProjectImages = async (projectName: string) => {
+  const loadProjectImages = async (projectTitle: string) => {
     try {
       const images = await import(
-        `../assets/${projectName.toLowerCase()}/index.js`
+        `../assets/${projectTitle.toLowerCase()}/index.js`
       );
       setProjectImages(images.default);
     } catch (error) {
