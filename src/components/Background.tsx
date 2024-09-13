@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
-import bigSmoke from "../assets/bigSmoke.png";
-import midSmoke from "../assets/midSmoke.png";
-import tinySmoke from "../assets/tinySmoke.png";
+import bigSmoke from "../../public/assets/bigSmoke.png";
+import midSmoke from "../../public/assets/midSmoke.png";
+import tinySmoke from "../../public/assets/tinySmoke.png";
 
 const Background = () => {
   return (

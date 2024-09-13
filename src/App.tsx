@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import { MotionValue, motion } from "framer-motion";
 import styled from "styled-components";
 import Circle from "./components/Circle";
@@ -7,6 +7,7 @@ import About from "./components/About";
 import Project from "./components/Project";
 import Work from "./components/Work";
 import Background from "./components/Background";
+import { projects } from "./utils/projects";
 
 const containerVariants = {
   hidden: {},
@@ -44,9 +45,29 @@ const contentVariants = {
   },
 };
 
-
 const App: React.FC = () => {
   const [selected, setSelected] = useState<string>(circleTitles[0]);
+  const [preloadedImages, setPreloadedImages] = useState<
+    Record<string, string[]>
+  >({});
+
+  useEffect(() => {
+    const preloadImages = () => {
+      const allImages: Record<string, string[]> = {};
+
+      projects.forEach((project) => {
+        const images = project.images.map(
+          (image) =>
+            `../../public/assets/${project.projectTitle.toLowerCase()}/${image}`,
+        );
+        allImages[project.projectTitle] = images;
+      });
+
+      setPreloadedImages(allImages);
+    };
+
+    preloadImages();
+  }, []);
 
   const handleCircleClick = (title: string) => {
     setSelected(title);
@@ -71,7 +92,7 @@ const App: React.FC = () => {
       case "about":
         return content(<About />);
       case "projects":
-        return content(<Project />);
+        return content(<Project preloadedImages={preloadedImages} />);
       case "work experiences":
         return content(<Work />);
       case "contact":

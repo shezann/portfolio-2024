@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { projects } from "../utils/projects";
 import ProjectImages from "./ProjectImages";
+import { projects } from "../utils/projects";
 
-const Project: React.FC = () => {
+interface ProjectProps {
+  preloadedImages: Record<string, string[]>;
+}
+
+const Project: React.FC<ProjectProps> = ({ preloadedImages }) => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [projectImages, setProjectImages] = useState<string[]>([]);
 
   useEffect(() => {
-    loadProjectImages(projects[currentProjectIndex].projectTitle);
-  }, [currentProjectIndex]);
-
-  const loadProjectImages = async (projectTitle: string) => {
-    try {
-      const images = await import(
-        `../assets/${projectTitle.toLowerCase()}/index.js`
-      );
-      setProjectImages(images.default);
-    } catch (error) {
-      console.error("Failed to load project images", error);
-      setProjectImages([]);
-    }
-  };
+    const project = projects[currentProjectIndex];
+    const images = preloadedImages[project.projectTitle];
+    console.log(`Loading images for ${project.projectTitle}:`, images);
+    setProjectImages(images || []);
+  }, [currentProjectIndex, preloadedImages]);
 
   const nextProject = () => {
     setCurrentProjectIndex((prevIndex) =>
@@ -50,7 +45,11 @@ const Project: React.FC = () => {
             </TechItem>
           ))}
         </TechnologiesList>
-        <ProjectImages images={projectImages} />
+        {projectImages.length > 0 ? (
+          <ProjectImages images={projectImages} />
+        ) : (
+          <p>No images available</p>
+        )}
         <p>{project.description}</p>
       </ProjectContainer>
       <ArrowButton onClick={nextProject}>&gt;</ArrowButton>
