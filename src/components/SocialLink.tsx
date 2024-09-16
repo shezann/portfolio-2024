@@ -23,15 +23,23 @@ const SocialLink: React.FC = () => {
   return (
     <LinksContainer>
       <LinkWithIcon icon={<Layers size={20} />} href="/resume">
-        <LinkText>Resume</LinkText>
+        <LinkText
+          href="../../public/shezan_m_resume.pdf"
+          download="shezan_m_resume.pdf"
+        >
+          Resume
+        </LinkText>
       </LinkWithIcon>
       <LinkWithIcon
         icon={<Linkedin size={20} />}
-        href="https://www.linkedin.com"
+        href="https://www.linkedin.com/in/shezan-m/"
       >
         <LinkText>LinkedIn</LinkText>
       </LinkWithIcon>
-      <LinkWithIcon icon={<Github size={20} />} href="https://github.com">
+      <LinkWithIcon
+        icon={<Github size={20} />}
+        href="https://github.com/shezann"
+      >
         <LinkText>GitHub</LinkText>
       </LinkWithIcon>
     </LinksContainer>
@@ -66,8 +74,14 @@ const LinkItem = styled.a`
   }
 `;
 
-const LinkText = styled.p`
+const LinkText = styled.a`
   font-size: 14px;
   font-weight: 400;
   margin: 0;
+  color: #333; // Set the default color to black
+  text-decoration: none; // Remove the default underline
+
+  &:hover {
+    color: #646cff; // Keep the hover color as it was
+  }
 `;

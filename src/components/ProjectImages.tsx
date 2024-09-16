@@ -29,14 +29,6 @@ const ProjectImages: React.FC<ProjectImagesProps> = ({ images }) => {
           <StyledImage
             key={index}
             src={image}
-            variants={imageVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              y: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.5 },
-            }}
             onError={handleImageError}
             onLoad={() => console.log(`Image loaded successfully: ${image}`)}
           />
@@ -60,8 +52,7 @@ const ImageContainer = styled.div`
 `;
 
 const StyledImage = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 75%;
   object-fit: contain;
   border-radius: 12px;
 `;

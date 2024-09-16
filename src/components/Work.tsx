@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { works } from "../utils/works";
+import { motion, AnimatePresence } from "framer-motion";
 
 import leftArrow from "../../public/assets/buttons/left.png";
 import rightArrow from "../../public/assets/buttons/right.png";
@@ -25,23 +26,33 @@ const Work: React.FC = () => {
   return (
     <Container>
       <ButtonImage src={leftArrow} alt="Previous" onClick={prevWork} />
-      <WorkContainer>
-        <StyledH1>
-          <StyledH1Colored>{work.companyName}</StyledH1Colored> -{" "}
-          {work.position}
-        </StyledH1>
-        <TechnologiesList>
-          {work.technologies.map((tech, idx, arr) => (
-            <TechItem key={idx}>
-              {tech}
-              {idx < arr.length - 1 && <Separator>•</Separator>}
-            </TechItem>
-          ))}
-        </TechnologiesList>
-        <WorkDescriptionWrapper>
-          <WorkDescription>{work.description}</WorkDescription>
-        </WorkDescriptionWrapper>
-      </WorkContainer>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentWorkIndex}
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -50 }}
+          transition={{ duration: 0.3 }}
+        >
+          <WorkContainer>
+            <StyledH1>
+              <StyledH1Colored>{work.companyName}</StyledH1Colored> -{" "}
+              {work.position}
+            </StyledH1>
+            <TechnologiesList>
+              {work.technologies.map((tech, idx, arr) => (
+                <TechItem key={idx}>
+                  {tech}
+                  {idx < arr.length - 1 && <Separator>•</Separator>}
+                </TechItem>
+              ))}
+            </TechnologiesList>
+            <WorkDescriptionWrapper>
+              <WorkDescription>{work.description}</WorkDescription>
+            </WorkDescriptionWrapper>
+          </WorkContainer>
+        </motion.div>
+      </AnimatePresence>
       <ButtonImage src={rightArrow} alt="Next" onClick={nextWork} />
     </Container>
   );

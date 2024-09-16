@@ -4,6 +4,7 @@ import ProjectImages from "./ProjectImages";
 import { projects } from "../utils/projects";
 import leftArrow from "../../public/assets/buttons/left.png";
 import rightArrow from "../../public/assets/buttons/right.png";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface ProjectProps {
   preloadedImages: Record<string, string[]>;
@@ -37,25 +38,35 @@ const Project: React.FC<ProjectProps> = ({ preloadedImages }) => {
   return (
     <Container>
       <ButtonImage src={leftArrow} alt="Previous" onClick={prevProject} />
-      <ProjectContainer>
-        <StyledH1>{project.projectName.toLowerCase()}</StyledH1>
-        <TechnologiesList>
-          {project.technologies.map((tech, idx, arr) => (
-            <TechItem key={idx}>
-              {tech}
-              {idx < arr.length - 1 && <Separator>•</Separator>}
-            </TechItem>
-          ))}
-        </TechnologiesList>
-        {projectImages.length > 0 ? (
-          <ProjectImages images={projectImages} />
-        ) : (
-          <p>No images available</p>
-        )}
-        <ProjectDescriptionWrapper>
-          <ProjectDescription>{project.description}</ProjectDescription>
-        </ProjectDescriptionWrapper>
-      </ProjectContainer>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentProjectIndex}
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -50 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ProjectContainer>
+            <StyledH1>{project.projectName.toLowerCase()}</StyledH1>
+            <TechnologiesList>
+              {project.technologies.map((tech, idx, arr) => (
+                <TechItem key={idx}>
+                  {tech}
+                  {idx < arr.length - 1 && <Separator>•</Separator>}
+                </TechItem>
+              ))}
+            </TechnologiesList>
+            {projectImages.length > 0 ? (
+              <ProjectImages images={projectImages} />
+            ) : (
+              <p>No images available</p>
+            )}
+            <ProjectDescriptionWrapper>
+              <ProjectDescription>{project.description}</ProjectDescription>
+            </ProjectDescriptionWrapper>
+          </ProjectContainer>
+        </motion.div>
+      </AnimatePresence>
       <ButtonImage src={rightArrow} alt="Next" onClick={nextProject} />
     </Container>
   );
@@ -71,7 +82,7 @@ const Container = styled.div`
 const ProjectContainer = styled.div`
   width: 100%;
   padding: 20px;
-  margin: 0 20px; /* Spacing around project for better visibility */
+  margin: 0 20px;
 `;
 
 const StyledH1 = styled.h1`
@@ -83,20 +94,20 @@ const StyledH1 = styled.h1`
 const TechnologiesList = styled.div`
   display: flex;
   align-items: center;
-  flex-wrap: wrap; /* Ensures wrapping on small screens */
+  flex-wrap: wrap;
   margin: 8px 0;
 `;
 
 const TechItem = styled.span`
   font-size: 16px;
-  color: #333; /* Change the color to fit your design */
+  color: #333;
   padding-right: 10px;
   line-height: 1.5;
 `;
 
 const Separator = styled.span`
   padding: 0 5px;
-  color: #333; /* Change the color to fit your design */
+  color: #333;
 `;
 
 const ButtonImage = styled.img`

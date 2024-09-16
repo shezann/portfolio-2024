@@ -7,6 +7,7 @@ import About from "./components/About";
 import Project from "./components/Project";
 import Work from "./components/Work";
 import Background from "./components/Background";
+import Contact from "./components/Contact";
 import { projects } from "./utils/projects";
 
 const containerVariants = {
@@ -96,7 +97,7 @@ const App: React.FC = () => {
       case "work experiences":
         return content(<Work />);
       case "contact":
-        return content(<div>Contact Info</div>);
+        return content(<Contact />);
       default:
         return content(<div>Select an option</div>);
     }
