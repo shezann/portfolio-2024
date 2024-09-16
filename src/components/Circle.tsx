@@ -10,15 +10,34 @@ interface CircleProps {
 }
 
 const circleVariants = {
-  hidden: { scale: 0 },
-  visible: { scale: 1, transition: { type: "spring", stiffness: 120 } },
+  hidden: {
+    scale: 0,
+  },
+  visible: {
+    scale: [0, 1.2, 0.9, 1], // Bubble effect with bounce
+    transition: {
+      type: "spring",
+      stiffness: 200,
+      damping: 10,
+      mass: 0.75, // Lighter bubble effect
+      duration: 0.6, // Slightly longer to make it feel bouncy
+    },
+  },
   hover: {
-    scale: 1.05,
-    transition: { type: "spring", stiffness: 300 },
+    scale: 1.1,
+    transition: {
+      type: "spring",
+      stiffness: 250,
+      damping: 15,
+    },
   },
   selected: {
     scale: 1,
-    transition: { type: "spring", stiffness: 120 },
+    transition: {
+      type: "spring",
+      stiffness: 150,
+      damping: 12,
+    },
   },
 };
 
