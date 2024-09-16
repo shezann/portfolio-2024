@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import LazyLoad from "react-lazyload";
 
@@ -7,21 +7,6 @@ interface ProjectImagesProps {
 }
 
 const ProjectImages: React.FC<ProjectImagesProps> = ({ images }) => {
-  const imageVariants = {
-    enter: {
-      opacity: 0,
-      y: 50, // Enter from below
-    },
-    center: {
-      opacity: 1,
-      y: 0,
-    },
-    exit: {
-      opacity: 0,
-      y: -50, // Exit to above
-    },
-  };
-
   return (
     <ImageContainer>
       {images.map((image, index) => (
