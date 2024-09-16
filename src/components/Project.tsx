@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ProjectImages from "./ProjectImages";
 import { projects } from "../utils/projects";
+import leftArrow from "../../public/assets/buttons/left.png";
+import rightArrow from "../../public/assets/buttons/right.png";
 
 interface ProjectProps {
   preloadedImages: Record<string, string[]>;
@@ -34,7 +36,7 @@ const Project: React.FC<ProjectProps> = ({ preloadedImages }) => {
 
   return (
     <Container>
-      <ArrowButton onClick={prevProject}>&lt;</ArrowButton>
+      <ButtonImage src={leftArrow} alt="Previous" onClick={prevProject} />
       <ProjectContainer>
         <StyledH1>{project.projectName.toLowerCase()}</StyledH1>
         <TechnologiesList>
@@ -50,9 +52,11 @@ const Project: React.FC<ProjectProps> = ({ preloadedImages }) => {
         ) : (
           <p>No images available</p>
         )}
-        <p>{project.description}</p>
+        <ProjectDescriptionWrapper>
+          <ProjectDescription>{project.description}</ProjectDescription>
+        </ProjectDescriptionWrapper>
       </ProjectContainer>
-      <ArrowButton onClick={nextProject}>&gt;</ArrowButton>
+      <ButtonImage src={rightArrow} alt="Next" onClick={nextProject} />
     </Container>
   );
 };
@@ -95,13 +99,25 @@ const Separator = styled.span`
   color: #333; /* Change the color to fit your design */
 `;
 
-const ArrowButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 24px;
+const ButtonImage = styled.img`
+  width: 50px;
+  height: 50px;
   cursor: pointer;
-  padding: 10px;
+  transition: transform 0.3s ease-in-out;
+
   &:hover {
-    background-color: #f0f0f0;
+    transform: scale(1.2);
   }
+`;
+
+const ProjectDescriptionWrapper = styled.div`
+  width: 100%;
+  margin-top: 50px;
+`;
+
+const ProjectDescription = styled.p`
+  font-size: 16px;
+  color: #333;
+  margin: 8px 0;
+  width: 120%;
 `;
