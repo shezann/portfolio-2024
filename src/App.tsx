@@ -58,8 +58,7 @@ const App: React.FC = () => {
 
       projects.forEach((project) => {
         const images = project.images.map(
-          (image) =>
-            `../../public/assets/${project.projectTitle.toLowerCase()}/${image}`,
+          (image) => `/assets/${project.projectTitle.toLowerCase()}/${image}`,
         );
         allImages[project.projectTitle] = images;
       });
