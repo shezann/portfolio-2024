@@ -5,7 +5,7 @@ export const projects: Project[] = [
     technologies: ["React Native", "Expo", "Express", "Supabase"],
     description:
       "peer-to-peer money transfer app that allows people without Canadian bank accounts to send money to friends and family in Canada",
-    images: ["image1.webp", "image2.webp", "image3.webp"],
+    images: ["/image1.webp", "/image2.webp", "/image3.webp"],
   },
   {
     projectTitle: "anitracker",
