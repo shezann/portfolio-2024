@@ -22,10 +22,14 @@ const LinkWithIcon: React.FC<LinkWithIconProps> = ({
 const SocialLink: React.FC = () => {
   return (
     <LinksContainer>
-      <LinkWithIcon icon={<Layers size={20} />} href="/resume">
+      <LinkWithIcon
+        icon={<Layers size={20} />}
+        href="/assets/shezan_m_resume.pdf" // Directly reference the path in the public folder
+      >
         <LinkText
-          href="../../public/shezan_m_resume.pdf"
+          href="/assets/shezan_m_resume.pdf" // Ensure the file path is correct
           download="shezan_m_resume.pdf"
+          type="application/pdf"
         >
           Resume
         </LinkText>
