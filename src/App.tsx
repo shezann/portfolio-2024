@@ -9,6 +9,7 @@ import Work from "./components/Work";
 import Background from "./components/Background";
 import Contact from "./components/Contact";
 import { projects } from "./utils/projects";
+import { Analytics } from "@vercel/analytics/react";
 
 const containerVariants = {
   hidden: {},
@@ -104,6 +105,7 @@ const App: React.FC = () => {
 
   return (
     <Container>
+      <Analytics />
       <Background />
       <TextSide>{renderContent()}</TextSide>
       <CircleSide>
