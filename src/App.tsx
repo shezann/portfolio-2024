@@ -58,10 +58,17 @@ const App: React.FC = () => {
       const allImages: Record<string, string[]> = {};
 
       projects.forEach((project) => {
+        // Build image URLs for this project
         const images = project.images.map(
           (image) => `/assets/${project.projectTitle.toLowerCase()}/${image}`,
         );
+        // Store URLs for later rendering
         allImages[project.projectTitle] = images;
+        // Preload each image so it's cached before display
+        images.forEach((src) => {
+          const img = new Image();
+          img.src = src;
+        });
       });
 
       setPreloadedImages(allImages);
