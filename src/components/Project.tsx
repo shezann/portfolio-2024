@@ -114,6 +114,9 @@ const ButtonImage = styled.img`
   width: 50px;
   height: 50px;
   cursor: pointer;
+  position: relative;
+  z-index: 10;
+  padding: 8px;
   transition: transform 0.3s ease-in-out;
 
   &:hover {
