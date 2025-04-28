@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { works } from "../utils/works";
 import { motion, AnimatePresence } from "framer-motion";
 
-import leftArrow from "../../public/assets/buttons/left.png";
-import rightArrow from "../../public/assets/buttons/right.png";
 
 const Work: React.FC = () => {
   const [currentWorkIndex, setCurrentWorkIndex] = useState(0);
@@ -25,7 +23,7 @@ const Work: React.FC = () => {
 
   return (
     <Container>
-      <ButtonImage src={leftArrow} alt="Previous" onClick={prevWork} />
+      <ButtonImage src="/assets/buttons/left.png" alt="Previous" onClick={prevWork} />
       <AnimatePresence mode="wait">
         <motion.div
           key={currentWorkIndex}
@@ -53,7 +51,7 @@ const Work: React.FC = () => {
           </WorkContainer>
         </motion.div>
       </AnimatePresence>
-      <ButtonImage src={rightArrow} alt="Next" onClick={nextWork} />
+      <ButtonImage src="/assets/buttons/right.png" alt="Next" onClick={nextWork} />
     </Container>
   );
 };

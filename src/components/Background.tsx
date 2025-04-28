@@ -1,14 +1,11 @@
 import styled, { keyframes } from "styled-components";
-import bigSmoke from "../../public/assets/bigSmoke.png";
-import midSmoke from "../../public/assets/midSmoke.png";
-import tinySmoke from "../../public/assets/tinySmoke.png";
 
 const Background = () => {
   return (
     <BackgroundStyled>
-      <BigSmoke src={bigSmoke} alt="smoke" />
-      <MediumSmoke src={midSmoke} alt="smoke" />
-      <TinySmoke className="smallSmoke" src={tinySmoke} alt="smoke" />
+      <BigSmoke src="/assets/bigSmoke.png" alt="smoke" />
+      <MediumSmoke src="/assets/midSmoke.png" alt="smoke" />
+      <TinySmoke className="smallSmoke" src="/assets/tinySmoke.png" alt="smoke" />
     </BackgroundStyled>
   );
 };

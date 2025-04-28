@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ProjectImages from "./ProjectImages";
 import { projects } from "../utils/projects";
-import leftArrow from "../../public/assets/buttons/left.png";
-import rightArrow from "../../public/assets/buttons/right.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ProjectProps {
@@ -37,7 +35,7 @@ const Project: React.FC<ProjectProps> = ({ preloadedImages }) => {
 
   return (
     <Container>
-      <ButtonImage src={leftArrow} alt="Previous" onClick={prevProject} />
+      <ButtonImage src="/assets/buttons/left.png" alt="Previous" onClick={prevProject} />
       <AnimatePresence mode="wait">
         <motion.div
           key={currentProjectIndex}
@@ -67,7 +65,7 @@ const Project: React.FC<ProjectProps> = ({ preloadedImages }) => {
           </ProjectContainer>
         </motion.div>
       </AnimatePresence>
-      <ButtonImage src={rightArrow} alt="Next" onClick={nextProject} />
+      <ButtonImage src="/assets/buttons/right.png" alt="Next" onClick={nextProject} />
     </Container>
   );
 };
