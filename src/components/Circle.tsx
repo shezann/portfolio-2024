@@ -14,20 +14,21 @@ const circleVariants = {
     scale: 0,
   },
   visible: {
-    scale: [0, 1.2, 0.9, 1], // Bubble effect with bounce
+    scale: [0, 0.95, 0.99, 1, 1.05, 1.1, 1, 0.95, 1],
     transition: {
       type: "spring",
-      stiffness: 200,
-      damping: 10,
-      mass: 0.75, // Lighter bubble effect
-      duration: 0.6, // Slightly longer to make it feel bouncy
+      ease: "easeInOut",
+      stiffness: 40,
+      damping: 8,
+      mass: 1.2,
+      duration: 0.2,
     },
   },
   hover: {
     scale: 1.1,
     transition: {
       type: "spring",
-      stiffness: 250,
+      stiffness: 35,
       damping: 15,
     },
   },
@@ -35,8 +36,8 @@ const circleVariants = {
     scale: 1,
     transition: {
       type: "spring",
-      stiffness: 150,
-      damping: 12,
+      stiffness: 40,
+      damping: 8,
     },
   },
 };
