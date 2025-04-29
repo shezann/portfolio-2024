@@ -3,17 +3,24 @@ import styled from "styled-components";
 import { works } from "../utils/works";
 import { motion, AnimatePresence } from "framer-motion";
 
+const slideVariants = {
+  enter: (direction: number) => ({ opacity: 0, x: 50 * direction }),
+  center: { opacity: 1, x: 0 },
+};
 
 const Work: React.FC = () => {
   const [currentWorkIndex, setCurrentWorkIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
 
   const nextWork = () => {
+    setDirection(1);
     setCurrentWorkIndex((prevIndex) =>
       prevIndex === works.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
   const prevWork = () => {
+    setDirection(-1);
     setCurrentWorkIndex((prevIndex) =>
       prevIndex === 0 ? works.length - 1 : prevIndex - 1,
     );
@@ -23,13 +30,18 @@ const Work: React.FC = () => {
 
   return (
     <Container>
-      <ButtonImage src="/assets/buttons/left.png" alt="Previous" onClick={prevWork} />
+      <ButtonImage
+        src="/assets/buttons/left.png"
+        alt="Previous"
+        onClick={prevWork}
+      />
       <AnimatePresence mode="wait">
         <motion.div
           key={currentWorkIndex}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
           transition={{ duration: 0.3 }}
         >
           <WorkContainer>
@@ -51,7 +63,11 @@ const Work: React.FC = () => {
           </WorkContainer>
         </motion.div>
       </AnimatePresence>
-      <ButtonImage src="/assets/buttons/right.png" alt="Next" onClick={nextWork} />
+      <ButtonImage
+        src="/assets/buttons/right.png"
+        alt="Next"
+        onClick={nextWork}
+      />
     </Container>
   );
 };

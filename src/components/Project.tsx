@@ -4,12 +4,18 @@ import ProjectImages from "./ProjectImages";
 import { projects } from "../utils/projects";
 import { motion, AnimatePresence } from "framer-motion";
 
+const slideVariants = {
+  enter: (direction: number) => ({ opacity: 0, x: 50 * direction }),
+  center: { opacity: 1, x: 0 },
+};
+
 interface ProjectProps {
   preloadedImages: Record<string, string[]>;
 }
 
 const Project: React.FC<ProjectProps> = ({ preloadedImages }) => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [projectImages, setProjectImages] = useState<string[]>([]);
 
   useEffect(() => {
@@ -20,12 +26,14 @@ const Project: React.FC<ProjectProps> = ({ preloadedImages }) => {
   }, [currentProjectIndex, preloadedImages]);
 
   const nextProject = () => {
+    setDirection(1);
     setCurrentProjectIndex((prevIndex) =>
       prevIndex === projects.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
   const prevProject = () => {
+    setDirection(-1);
     setCurrentProjectIndex((prevIndex) =>
       prevIndex === 0 ? projects.length - 1 : prevIndex - 1,
     );
@@ -35,13 +43,18 @@ const Project: React.FC<ProjectProps> = ({ preloadedImages }) => {
 
   return (
     <Container>
-      <ButtonImage src="/assets/buttons/left.png" alt="Previous" onClick={prevProject} />
+      <ButtonImage
+        src="/assets/buttons/left.png"
+        alt="Previous"
+        onClick={prevProject}
+      />
       <AnimatePresence mode="wait">
         <motion.div
           key={currentProjectIndex}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
           transition={{ duration: 0.3 }}
         >
           <ProjectContainer>
@@ -65,7 +78,11 @@ const Project: React.FC<ProjectProps> = ({ preloadedImages }) => {
           </ProjectContainer>
         </motion.div>
       </AnimatePresence>
-      <ButtonImage src="/assets/buttons/right.png" alt="Next" onClick={nextProject} />
+      <ButtonImage
+        src="/assets/buttons/right.png"
+        alt="Next"
+        onClick={nextProject}
+      />
     </Container>
   );
 };
