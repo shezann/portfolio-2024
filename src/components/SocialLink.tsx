@@ -24,13 +24,9 @@ const SocialLink: React.FC = () => {
     <LinksContainer>
       <LinkWithIcon
         icon={<Layers size={20} />}
-        href="/assets/shezan_m_resume.pdf" // Directly reference the path in the public folder
+        href="/assets/shezan_m_resume.pdf"
       >
-        <LinkText
-          href="/assets/shezan_m_resume.pdf" // Ensure the file path is correct
-          download="shezan_m_resume.pdf"
-          type="application/pdf"
-        >
+        <LinkText download="shezan_m_resume.pdf" type="application/pdf">
           Resume
         </LinkText>
       </LinkWithIcon>
@@ -70,8 +66,9 @@ const LinkItem = styled.a`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: inherit;
+  color: #333;
   margin-right: 20px;
+  transition: color 0.2s ease;
 
   &:hover {
     color: #646cff;
@@ -82,10 +79,6 @@ const LinkText = styled.a`
   font-size: 14px;
   font-weight: 400;
   margin: 0;
-  color: #333; // Set the default color to black
-  text-decoration: none; // Remove the default underline
-
-  &:hover {
-    color: #646cff; // Keep the hover color as it was
-  }
+  color: inherit;
+  text-decoration: none;
 `;
