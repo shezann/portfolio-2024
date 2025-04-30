@@ -14,7 +14,7 @@ const circleVariants = {
     scale: 0,
   },
   visible: {
-    scale: [0, 0.95, 0.99, 1, 1.05, 1.1, 1, 0.95, 1],
+    scale: [0.5, 0.95, 0.99, 1, 1.2, 1.1, 1, 0.95, 1],
     transition: {
       type: "spring",
       ease: "easeInOut",
