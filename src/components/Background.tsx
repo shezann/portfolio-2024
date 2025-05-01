@@ -3,9 +3,13 @@ import styled, { keyframes } from "styled-components";
 const Background = () => {
   return (
     <BackgroundStyled>
-      <BigSmoke src="/assets/bigSmoke.png" alt="smoke" />
-      <MediumSmoke src="/assets/midSmoke.png" alt="smoke" />
-      <TinySmoke className="smallSmoke" src="/assets/tinySmoke.png" alt="smoke" />
+      <BigSmoke src="/assets/bigSmoke.webp" alt="smoke" />
+      <MediumSmoke src="/assets/midSmoke.webp" alt="smoke" />
+      <TinySmoke
+        className="smallSmoke"
+        src="/assets/tinySmoke.webp"
+        alt="smoke"
+      />
     </BackgroundStyled>
   );
 };
@@ -112,4 +116,3 @@ const BackgroundStyled = styled.div`
     object-fit: cover;
   }
 `;
-
