@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import ProjectImages from "./ProjectImages";
+import ProjectImages from "../components/ProjectImages";
 import { projects } from "../utils/projects";
 import { motion, AnimatePresence } from "framer-motion";
 

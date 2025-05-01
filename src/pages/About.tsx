@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SocialLink from "./SocialLink";
+import SocialLink from "../components/SocialLink";
 import { PERSONAL_STATEMENT } from "../utils/constants";
 
 const About: React.FC = () => {

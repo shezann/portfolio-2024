@@ -3,11 +3,11 @@ import { MotionValue, motion } from "framer-motion";
 import styled from "styled-components";
 import Circle from "./components/Circle";
 import { circleTitles } from "./utils/constants";
-import About from "./components/About";
-import Project from "./components/Project";
-import Work from "./components/Work";
+import About from "./pages/About";
+import Project from "./pages/Project";
+import Work from "./pages/Work";
 import Background from "./components/Background";
-import Contact from "./components/Contact";
+import Contact from "./pages/Contact";
 import { projects } from "./utils/projects";
 import { Analytics } from "@vercel/analytics/react";
 
